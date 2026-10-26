@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pills = document.querySelectorAll('.filter-pill');
   const cards = document.querySelectorAll('.project-card');
   const status = document.getElementById('filter-status');
+  const grid = document.getElementById('projects-container');
 
   pills.forEach((pill) => {
     pill.addEventListener('click', () => {
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         p.setAttribute('aria-pressed', String(on));
       });
       const filter = pill.dataset.filter;
+      if (grid) grid.dataset.filter = filter;
       let count = 0;
       cards.forEach((card) => {
         const show = filter === 'all' || card.dataset.category === filter;
@@ -49,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
           count++;
           if (!reduceMotion.matches) {
             card.animate(
-              [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
-              { duration: 250, easing: 'ease-out' }
+              [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }],
+              { duration: 450, easing: 'ease-out' }
             );
           }
         }
