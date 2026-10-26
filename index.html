@@ -12,27 +12,26 @@
   <meta property="og:title" content="Daniel Rojas — Portafolio">
   <meta property="og:description" content="Desarrollador Full-Stack e Ingeniero de Sistemas. Proyectos y soluciones tecnológicas.">
 
-  <!-- Google Fonts: Inter (Tipografía limpia estilo SF Pro) -->
+  <!-- Bricolage Grotesque solo para titulares; el texto de lectura usa la fuente del sistema -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Ambient Liquid Glow Elements -->
-  <div class="liquid-ambient ambient-top" aria-hidden="true"></div>
-  <div class="liquid-ambient ambient-bottom" aria-hidden="true"></div>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
 
   <!-- Navigation Bar: Apple Style Floating Glass Capsule -->
   <header class="navbar-wrapper">
-    <nav class="navbar-liquid" id="navbar">
+    <nav class="navbar-liquid" id="navbar" aria-label="Principal">
       <a href="#hero" class="brand-link" aria-label="Inicio">
         <span class="brand-name">Daniel Rojas</span>
       </a>
 
       <div class="nav-links" id="nav-menu">
-        <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
+        <a href="#sobre-mi" class="nav-link">Sobre mí</a>
         <a href="#proyectos" class="nav-link">Proyectos</a>
         <a href="#experiencia" class="nav-link">Experiencia</a>
         <a href="#habilidades" class="nav-link">Habilidades</a>
@@ -44,7 +43,7 @@
           <span>Contactar</span>
         </a>
 
-        <button class="mobile-toggle" id="menu-toggle" aria-label="Menú">
+        <button class="mobile-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
           <span></span>
           <span></span>
         </button>
@@ -52,9 +51,10 @@
     </nav>
   </header>
 
-  <main>
+  <main id="contenido">
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
+      <div class="hero-mesh" aria-hidden="true"></div>
       <div class="container hero-container">
         
         <div class="hero-pill-badge">
@@ -63,8 +63,8 @@
         </div>
 
         <h1 class="hero-headline">
-          Precisión técnica.<br>
-          <span class="text-secondary-gradient">Diseño intuitivo.</span>
+          Software que ordena<br>
+          <span class="text-secondary-gradient">el trabajo de negocios reales.</span>
         </h1>
 
         <p class="hero-description">
@@ -73,7 +73,7 @@
 
         <div class="hero-actions">
           <a href="#proyectos" class="btn-apple-primary">
-            <span>Ver Proyectos</span>
+            <span>Ver proyectos</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
@@ -107,7 +107,6 @@
     <section class="section" id="sobre-mi">
       <div class="container">
         <div class="section-header-centered">
-          <span class="section-tag">Perfil</span>
           <h2 class="section-heading">Una visión integral de la ingeniería de software.</h2>
           <p class="section-intro">
             Enfoque en transformar requerimientos complejos y procesos manuales en arquitecturas tecnológicas automatizadas, seguras y escalables.
@@ -123,7 +122,7 @@
                 <line x1="12" y1="17" x2="12" y2="21"></line>
               </svg>
             </div>
-            <h3>Formación Académica e Internacional</h3>
+            <h3>Formación académica e internacional</h3>
             <p>
               Estudiante de 9º semestre de Ingeniería de Sistemas (UCC) con experiencia académica en la Universidad de Guadalajara (México). Sólidas bases en algoritmos, estructuras de datos y modelado de software.
             </p>
@@ -136,7 +135,7 @@
                 <polyline points="8 6 2 12 8 18"></polyline>
               </svg>
             </div>
-            <h3>Desarrollo Frontend & Backend</h3>
+            <h3>Desarrollo frontend y backend</h3>
             <p>
               Creación de experiencias interactivas modernas con React, TypeScript y Node.js, complementadas con robustos servicios en Django (Python) y bases de datos relacionales en MySQL y Supabase.
             </p>
@@ -151,7 +150,7 @@
                 <line x1="6" y1="18" x2="6.01" y2="18"></line>
               </svg>
             </div>
-            <h3>Infraestructura & Despliegue VPS</h3>
+            <h3>Infraestructura y despliegue VPS</h3>
             <p>
               Aprovisionamiento, seguridad y gestión de servidores VPS Linux/Windows, despliegue continuo en plataformas serverless (Vercel) y automatización de procesos operativos empresariales.
             </p>
@@ -166,21 +165,22 @@
         
         <div class="section-header-split">
           <div>
-            <span class="section-tag">Portafolio</span>
-            <h2 class="section-heading">Proyectos Destacados</h2>
+            <h2 class="section-heading">Proyectos destacados</h2>
             <p class="section-intro">
               Selección de plataformas, aplicaciones e implementaciones diseñadas para entornos de producción.
             </p>
           </div>
 
           <!-- Minimal Filter Pills -->
-          <div class="liquid-filter-bar" role="tablist">
-            <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">Todos</button>
-            <button class="filter-pill" data-filter="fullstack" role="tab" aria-selected="false">Full-Stack</button>
-            <button class="filter-pill" data-filter="ecommerce" role="tab" aria-selected="false">E-Commerce</button>
-            <button class="filter-pill" data-filter="backend" role="tab" aria-selected="false">Backend / VPS</button>
+          <div class="liquid-filter-bar" role="group" aria-label="Filtrar proyectos">
+            <button class="filter-pill active" data-filter="all" aria-pressed="true">Todos</button>
+            <button class="filter-pill" data-filter="fullstack" aria-pressed="false">Full-Stack</button>
+            <button class="filter-pill" data-filter="ecommerce" aria-pressed="false">E-Commerce</button>
+            <button class="filter-pill" data-filter="backend" aria-pressed="false">Backend / VPS</button>
           </div>
         </div>
+
+        <p class="sr-only" id="filter-status" aria-live="polite"></p>
 
         <div class="projects-container" id="projects-container">
 
@@ -190,7 +190,7 @@
               <div class="project-header">
                 <div class="badge-row">
                   <span class="liquid-status-badge">
-                    <span class="pip-green"></span> En Producción
+                    <span class="pip-green"></span> En producción
                   </span>
                   <span class="project-category-text">Web App · React & Supabase</span>
                 </div>
@@ -229,7 +229,7 @@
 
               <div class="project-cta-row">
                 <a href="https://relaxvr360.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-apple-link">
-                  <span>Abrir Proyecto</span>
+                  <span>Abrir proyecto</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -246,7 +246,7 @@
               <div class="project-header">
                 <div class="badge-row">
                   <span class="liquid-status-badge">
-                    <span class="pip-green"></span> En Producción
+                    <span class="pip-green"></span> En producción
                   </span>
                   <span class="project-category-text">E-Commerce Internacional</span>
                 </div>
@@ -279,12 +279,12 @@
                 <span class="tag-pill">WordPress</span>
                 <span class="tag-pill">WooCommerce</span>
                 <span class="tag-pill">Custom CSS</span>
-                <span class="tag-pill">Pasarelas de Pago</span>
+                <span class="tag-pill">Pasarelas de pago</span>
               </div>
 
               <div class="project-cta-row">
                 <a href="https://amarmeindumentaria.com/" target="_blank" rel="noopener noreferrer" class="btn-apple-link">
-                  <span>Abrir Proyecto</span>
+                  <span>Abrir proyecto</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -300,7 +300,7 @@
             <div class="project-inner">
               <div class="project-header">
                 <div class="badge-row">
-                  <span class="liquid-corp-badge">Sistema Empresarial</span>
+                  <span class="liquid-corp-badge">Sistema empresarial</span>
                   <span class="project-category-text">Backend · Django & VPS</span>
                 </div>
                 <h3 class="project-name">Pool Químicos & Suministros</h3>
@@ -313,7 +313,7 @@
                   <span class="glass-pip"></span>
                   <span class="glass-pip"></span>
                   <span class="glass-pip"></span>
-                  <span class="glass-domain">vps.internal.network</span>
+                  <span class="glass-domain">Plataforma privada</span>
                 </div>
                 <div class="glass-canvas canvas-pool">
                   <div class="canvas-reflection"></div>
@@ -396,8 +396,7 @@
     <section class="section" id="experiencia">
       <div class="container">
         <div class="section-header-centered">
-          <span class="section-tag">Trayectoria</span>
-          <h2 class="section-heading">Experiencia Laboral</h2>
+          <h2 class="section-heading">Experiencia laboral</h2>
           <p class="section-intro">
             Historial de colaboraciones técnicas y desarrollo de software en entornos productivos.
           </p>
@@ -474,8 +473,7 @@
     <section class="section" id="habilidades">
       <div class="container">
         <div class="section-header-centered">
-          <span class="section-tag">Capacidades</span>
-          <h2 class="section-heading">Stack Tecnológico & Formación</h2>
+          <h2 class="section-heading">Stack tecnológico y formación</h2>
           <p class="section-intro">
             Tecnologías dominadas y trayectoria formativa nacional e internacional.
           </p>
@@ -497,7 +495,7 @@
 
           <!-- Columna 2 -->
           <div class="liquid-card skill-bento-tile">
-            <span class="tile-category">Backend & Datos</span>
+            <span class="tile-category">Backend y datos</span>
             <div class="tile-tags">
               <span class="tag-pill-sm">Python</span>
               <span class="tag-pill-sm">Django</span>
@@ -510,7 +508,7 @@
 
           <!-- Columna 3 -->
           <div class="liquid-card skill-bento-tile">
-            <span class="tile-category">Cloud & Servidores</span>
+            <span class="tile-category">Cloud y servidores</span>
             <div class="tile-tags">
               <span class="tag-pill-sm">Administración VPS</span>
               <span class="tag-pill-sm">Linux / Bash</span>
@@ -522,7 +520,7 @@
 
           <!-- Columna 4 -->
           <div class="liquid-card skill-bento-tile">
-            <span class="tile-category">CMS & E-Commerce</span>
+            <span class="tile-category">CMS y e-commerce</span>
             <div class="tile-tags">
               <span class="tag-pill-sm">WordPress</span>
               <span class="tag-pill-sm">WooCommerce</span>
@@ -536,7 +534,7 @@
         <!-- Educación Apple Style -->
         <div class="edu-container">
           <div class="liquid-card edu-tile">
-            <div class="edu-flag">🇨🇴</div>
+            <div class="edu-flag" aria-hidden="true">🇨🇴</div>
             <div>
               <h3 class="edu-title">Ingeniería de Sistemas</h3>
               <p class="edu-school">Universidad Cooperativa de Colombia · Montería, Córdoba</p>
@@ -545,20 +543,20 @@
           </div>
 
           <div class="liquid-card edu-tile">
-            <div class="edu-flag">🇲🇽</div>
+            <div class="edu-flag" aria-hidden="true">🇲🇽</div>
             <div>
-              <h3 class="edu-title">Intercambio Académico Internacional</h3>
+              <h3 class="edu-title">Intercambio académico internacional</h3>
               <p class="edu-school">Universidad de Guadalajara (UdeG) · Guadalajara, México</p>
               <span class="edu-badge">7º Semestre (2025)</span>
             </div>
           </div>
 
           <div class="liquid-card edu-tile">
-            <div class="edu-flag">🌐</div>
+            <div class="edu-flag" aria-hidden="true">🌐</div>
             <div>
               <h3 class="edu-title">Idiomas</h3>
-              <p class="edu-school">Español (Nativo) · Inglés (Nivel Intermedio B1)</p>
-              <span class="edu-badge">Competencia Técnica</span>
+              <p class="edu-school">Español (nativo) · Inglés (nivel intermedio B1)</p>
+              <span class="edu-badge">Competencia técnica</span>
             </div>
           </div>
         </div>
@@ -571,7 +569,6 @@
       <div class="container">
         <div class="liquid-card contact-master-card">
           <div class="contact-header-inner">
-            <span class="section-tag">Contacto</span>
             <h2 class="contact-headline">Hablemos de tu próximo proyecto.</h2>
             <p class="contact-subheadline">
               Disponible para desarrollos full-stack, automatizaciones y tiendas e-commerce personalizadas.
@@ -588,13 +585,14 @@
                 </svg>
               </div>
               <div class="btn-text-content">
-                <span class="btn-subtext">WhatsApp Directo</span>
+                <span class="btn-subtext">WhatsApp directo</span>
                 <span class="btn-maintext">+57 315 078 9625</span>
               </div>
             </a>
 
             <!-- Email con Copia -->
-            <div class="contact-liquid-btn email-copy-container" id="copy-email-box">
+            <div class="contact-liquid-btn email-copy-container">
+              <a class="email-link" href="mailto:danielest.rojas23@gmail.com">
               <div class="btn-icon-box">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -602,10 +600,12 @@
                 </svg>
               </div>
               <div class="btn-text-content">
-                <span class="btn-subtext">Correo Electrónico (Clic para copiar)</span>
+                <span class="btn-subtext">Correo electrónico</span>
                 <span class="btn-maintext" id="email-text">danielest.rojas23@gmail.com</span>
               </div>
-              <span class="copy-badge" id="copy-status">Copiar</span>
+              </a>
+              <button type="button" class="copy-badge" id="copy-status">Copiar</button>
+              <span class="sr-only" id="copy-live" aria-live="polite"></span>
             </div>
 
           </div>
@@ -622,7 +622,7 @@
   <footer class="apple-footer">
     <div class="container footer-inner">
       <p class="footer-credit">
-        © 2026 Daniel Esteban Rojas Sánchez. Diseñado con estética Liquid Glass & optimizado para Vercel.
+        © 2026 Daniel Esteban Rojas Sánchez. Diseñado y desarrollado por Daniel Rojas.
       </p>
       <div class="footer-nav">
         <a href="#hero">Inicio</a>

@@ -1,116 +1,116 @@
-// Portfolio Scripts - Daniel Esteban Rojas Sánchez (Apple Minimalist & Liquid Glass)
+// Portafolio — Daniel Esteban Rojas Sánchez
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Mobile Menu Toggle
-  const menuToggle = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // 1. Menú móvil (aria-expanded, Escape y clic fuera)
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
+  const setMenu = (open) => {
+    menu.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  };
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-      });
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => setMenu(!menu.classList.contains('active')));
+    navLinks.forEach((l) => l.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('active')) {
+        setMenu(false);
+        toggle.focus();
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
     });
   }
 
-  // 2. Project Filter System (Liquid Pills)
-  const filterPills = document.querySelectorAll('.filter-pill');
-  const projectCards = document.querySelectorAll('.project-card');
+  // 2. Filtro de proyectos (botones con aria-pressed + anuncio de resultados)
+  const pills = document.querySelectorAll('.filter-pill');
+  const cards = document.querySelectorAll('.project-card');
+  const status = document.getElementById('filter-status');
 
-  filterPills.forEach(pill => {
+  pills.forEach((pill) => {
     pill.addEventListener('click', () => {
-      // Toggle active status
-      filterPills.forEach(p => {
-        p.classList.remove('active');
-        p.setAttribute('aria-selected', 'false');
+      pills.forEach((p) => {
+        const on = p === pill;
+        p.classList.toggle('active', on);
+        p.setAttribute('aria-pressed', String(on));
       });
-      pill.classList.add('active');
-      pill.setAttribute('aria-selected', 'true');
-
-      const filterValue = pill.getAttribute('data-filter');
-
-      // Filter cards with smooth opacity transition
-      projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filterValue === 'all' || category === filterValue) {
-          card.classList.remove('hidden');
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(8px)';
-          setTimeout(() => {
-            card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 30);
-        } else {
-          card.classList.add('hidden');
+      const filter = pill.dataset.filter;
+      let count = 0;
+      cards.forEach((card) => {
+        const show = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('hidden', !show);
+        if (show) {
+          count++;
+          if (!reduceMotion.matches) {
+            card.animate(
+              [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
+              { duration: 250, easing: 'ease-out' }
+            );
+          }
         }
       });
+      if (status) status.textContent = `${count} ${count === 1 ? 'proyecto' : 'proyectos'}`;
     });
   });
 
-  // 3. Apple-Style Email Copy to Clipboard
-  const copyEmailBox = document.getElementById('copy-email-box');
-  const copyStatus = document.getElementById('copy-status');
-  const emailText = document.getElementById('email-text');
+  // 3. Copiar correo (botón real + anuncio para lectores de pantalla)
+  const copyBtn = document.getElementById('copy-status');
+  const emailEl = document.getElementById('email-text');
+  const live = document.getElementById('copy-live');
 
-  if (copyEmailBox && emailText && copyStatus) {
-    copyEmailBox.addEventListener('click', async () => {
-      const email = emailText.innerText.trim();
+  const fallbackCopy = (text) => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (_) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  };
+
+  if (copyBtn && emailEl) {
+    copyBtn.addEventListener('click', async () => {
+      const email = emailEl.textContent.trim();
+      let ok = true;
       try {
         await navigator.clipboard.writeText(email);
-        copyStatus.textContent = '¡Copiado!';
-        copyStatus.style.color = '#34c759';
-        copyStatus.style.borderColor = 'rgba(52, 199, 89, 0.4)';
-
-        setTimeout(() => {
-          copyStatus.textContent = 'Copiar';
-          copyStatus.style.color = '';
-          copyStatus.style.borderColor = '';
-        }, 2200);
-      } catch (err) {
-        // Fallback for older browsers
-        const textarea = document.createElement('textarea');
-        textarea.value = email;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-
-        copyStatus.textContent = '¡Copiado!';
-        setTimeout(() => {
-          copyStatus.textContent = 'Copiar';
-        }, 2200);
+      } catch (_) {
+        ok = fallbackCopy(email);
       }
+      copyBtn.textContent = ok ? 'Copiado' : 'No se pudo copiar';
+      copyBtn.classList.toggle('is-done', ok);
+      if (live) live.textContent = ok ? 'Correo copiado al portapapeles' : 'No se pudo copiar el correo';
+      setTimeout(() => {
+        copyBtn.textContent = 'Copiar';
+        copyBtn.classList.remove('is-done');
+      }, 2200);
     });
   }
 
-  // 4. Active Navigation Observer
+  // 4. Navegación activa (clase + aria-current, no solo color)
   const sections = document.querySelectorAll('section[id]');
-  const observerOptions = {
-    root: null,
-    rootMargin: '-30% 0px -60% 0px',
-    threshold: 0
-  };
-
   const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
-      }
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      navLinks.forEach((link) => {
+        const match = link.getAttribute('href') === `#${id}`;
+        link.classList.toggle('active', match);
+        if (match) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
     });
-  }, observerOptions);
+  }, { root: null, rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
-  sections.forEach(sec => navObserver.observe(sec));
+  sections.forEach((s) => navObserver.observe(s));
 });

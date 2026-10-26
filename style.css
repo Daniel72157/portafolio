@@ -21,8 +21,8 @@
   
   /* Typography Colors */
   --text-primary: #f5f5f7;
-  --text-secondary: #86868b;
-  --text-tertiary: #525256;
+  --text-secondary: #a1a1a6;
+  --text-tertiary: #8e8e93;
   
   /* Subtle Accents */
   --accent-emerald: #34c759;
@@ -52,7 +52,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: 100%;
   color-scheme: dark;
 }
 
@@ -1110,3 +1110,164 @@ body {
     text-align: center;
   }
 }
+
+
+/* ===================================================================
+   REDISEÑO v2 — vidrio solo en la navegación, contenido sólido,
+   color con significado (cada proyecto toma el matiz de su cliente)
+   =================================================================== */
+:root{
+  --surface:#0c0c0e; --line:rgba(255,255,255,.12); --line-strong:rgba(255,255,255,.28); --focus:#0a84ff;
+  --font-sans:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',system-ui,sans-serif;
+  --font-display:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display',system-ui,sans-serif;
+  --transition-apple:background-color .2s ease,border-color .2s ease,color .2s ease,opacity .2s ease;
+}
+html{scroll-behavior:auto;scroll-padding-top:6rem}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+h1,h2,h3,.brand-name,.metric-title,.project-name,.contact-headline{font-family:var(--font-display)}
+
+/* Contenido: superficies sólidas, sin hover falso */
+.liquid-card{background:var(--surface);border-color:var(--line);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.liquid-card::before{display:none}
+.liquid-card:hover{background:var(--surface);border-color:var(--line);box-shadow:none;transform:none}
+.btn-apple-glass,.liquid-filter-bar{backdrop-filter:none;-webkit-backdrop-filter:none}
+.btn-apple-glass{background:transparent;border-color:var(--line-strong)}
+.btn-apple-primary:hover,.btn-apple-glass:hover,.btn-apple-link:hover,.contact-liquid-btn:hover{transform:none}
+
+/* Firma: matiz por proyecto */
+.project-card{border-top:3px solid var(--hue,var(--line))}
+.project-card:hover{border-top-color:var(--hue,var(--line))}
+.project-card:has(.canvas-relax){--hue:#6e7bff}
+.project-card:has(.canvas-amarme){--hue:#ff6b8b}
+.project-card:has(.canvas-pool){--hue:#2ec4b6}
+.project-card:has(.canvas-zurych){--hue:#c98a4b}
+.glass-canvas{background:radial-gradient(circle at 50% 0%,color-mix(in srgb,var(--hue,#333) 32%,#000),#050506 85%)}
+
+/* Tamaños legibles */
+body{font-size:1rem}
+.bento-card p,.project-summary,.role-bullets li,.edu-school,.section-intro{font-size:1rem}
+.project-category-text,.glass-domain,.btn-subtext,.meta-badge,.meta-date,.tag-pill,.tag-pill-sm,.edu-badge,.copy-badge,
+.liquid-status-badge,.liquid-corp-badge,.canvas-sub,.static-pill-note,.footer-credit,.footer-nav a,.contact-footer-info,
+.hero-pill-badge,.metric-detail,.project-location,.company-title,.filter-pill{font-size:.8125rem}
+.btn-subtext,.meta-badge{text-transform:none;letter-spacing:0}
+
+/* Áreas de toque */
+.filter-pill,.btn-apple-link,.copy-badge,.footer-nav a{min-height:44px;display:inline-flex;align-items:center}
+.btn-pill-compact{min-height:40px}
+.mobile-toggle{width:44px;height:44px;align-items:center;justify-content:center}
+.mobile-toggle span{transition:transform .2s ease}
+.mobile-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(3.25px) rotate(45deg)}
+.mobile-toggle[aria-expanded="true"] span:nth-child(2){transform:translateY(-3.25px) rotate(-45deg)}
+
+/* Navegación activa: no solo color */
+.nav-link.active{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px}
+
+/* Correo: enlace real + botón */
+.email-copy-container{cursor:default}
+.email-link{display:flex;align-items:center;gap:1rem;flex:1;min-width:0;color:inherit;text-decoration:none}
+.btn-maintext{overflow-wrap:anywhere}
+.copy-badge{font-family:inherit;cursor:pointer;padding:.5rem 1rem;color:var(--text-primary)}
+.copy-badge:hover{background:rgba(255,255,255,.14)}
+.copy-badge.is-done{color:var(--accent-emerald);border-color:rgba(52,199,89,.5)}
+
+/* Foco, saltar al contenido, solo lectores */
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.skip-link{position:absolute;left:1rem;top:-4rem;z-index:2000;background:#fff;color:#000;padding:.75rem 1rem;border-radius:12px;font-weight:600;text-decoration:none}
+.skip-link:focus{top:1rem}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Menú móvil: anclado a la cápsula, sólido */
+@media (max-width:768px){
+  .navbar-liquid{position:relative}
+  .nav-links{position:absolute;top:calc(100% + .5rem);left:0;right:0;gap:.25rem;background:#121216;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav-links .nav-link{display:flex;align-items:center;width:100%;min-height:44px;font-size:1rem}
+}
+
+/* Preferencias del sistema */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+@media (prefers-contrast:more){:root{--line:rgba(255,255,255,.45);--text-tertiary:#c7c7cc}.liquid-card{border-color:var(--line-strong)}}
+@media (prefers-reduced-transparency:reduce){.navbar-liquid{background:#121216;backdrop-filter:none;-webkit-backdrop-filter:none}}
+
+
+/* ===================================================================
+   REDISEÑO v3 — malla de color, titulares grandes, matiz por cliente
+   Un matiz = un cliente (hero, proyecto y línea de tiempo coinciden)
+   =================================================================== */
+:root{
+  --bg-deep:#06070d; --surface:#0d1018; --line:rgba(255,255,255,.1);
+  --text-primary:#f4f5f8; --text-secondary:#a9adbb; --text-tertiary:#8b90a0;
+  --h-indigo:#7c8cff; --h-rose:#ff7a9a; --h-teal:#34d3c0; --h-amber:#f2a65a;
+  --font-display:'Bricolage Grotesque',-apple-system,BlinkMacSystemFont,'SF Pro Display',system-ui,sans-serif;
+  --container-max:1160px; --radius-card:28px;
+}
+body{background-color:var(--bg-deep)}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:28px 28px;
+  -webkit-mask-image:radial-gradient(75% 60% at 50% 25%,#000,transparent);mask-image:radial-gradient(75% 60% at 50% 25%,#000,transparent)}
+h1,h2,h3,.brand-name,.metric-title,.project-name,.contact-headline{font-family:var(--font-display);font-weight:700}
+
+/* Hero */
+.hero-section{position:relative;isolation:isolate;min-height:100svh;padding-top:9rem}
+.hero-mesh{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.75;
+  background:
+    radial-gradient(38% 48% at 84% 16%,color-mix(in srgb,var(--h-indigo) 42%,transparent),transparent 70%),
+    radial-gradient(34% 44% at 98% 58%,color-mix(in srgb,var(--h-rose) 38%,transparent),transparent 70%),
+    radial-gradient(34% 40% at 68% 90%,color-mix(in srgb,var(--h-teal) 30%,transparent),transparent 70%),
+    radial-gradient(28% 34% at 52% 6%,color-mix(in srgb,var(--h-amber) 26%,transparent),transparent 70%);
+  -webkit-mask-image:linear-gradient(#000 75%,transparent);mask-image:linear-gradient(#000 75%,transparent)}
+.hero-headline{font-size:clamp(2.9rem,8.2vw,6.75rem);line-height:.96;letter-spacing:-.045em;max-width:none}
+.text-secondary-gradient{color:var(--h-rose);font-weight:inherit;
+  background:linear-gradient(95deg,var(--h-indigo),var(--h-rose) 55%,var(--h-amber));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-description{color:#c9ccd6;font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:640px}
+.btn-apple-primary{padding:1rem 1.9rem;font-size:1rem}
+.btn-apple-glass{padding:1rem 1.9rem;font-size:1rem}
+.hero-bento-strip{gap:2rem;margin-top:1rem}
+.hero-bento-strip .bento-metric-card{background:transparent;border:0;border-top:1px solid var(--line-strong);border-radius:0;padding:1.25rem 0 0}
+.metric-title{font-size:clamp(1.4rem,2.6vw,2rem);letter-spacing:-.03em}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes rise{from{opacity:0;transform:translateY(24px)}}
+  .hero-container>*{animation:rise .9s cubic-bezier(.16,1,.3,1) both}
+  .hero-container>:nth-child(2){animation-delay:.08s}.hero-container>:nth-child(3){animation-delay:.16s}
+  .hero-container>:nth-child(4){animation-delay:.24s}.hero-container>:nth-child(5){animation-delay:.32s}
+}
+
+/* Secciones editoriales */
+.section{padding-block:clamp(5rem,10vw,8rem)}
+.section-header-centered{text-align:left;max-width:none;margin:0 0 3.5rem}
+.section-heading{font-size:clamp(2.4rem,5.5vw,4.5rem);line-height:1;letter-spacing:-.04em;max-width:18ch}
+.section-header-split .section-heading{max-width:none}
+.section-intro{max-width:56ch;font-size:1.125rem}
+.bento-card{background:linear-gradient(180deg,rgba(255,255,255,.045),transparent 60%),var(--surface)}
+.bento-card h3{font-size:1.35rem;letter-spacing:-.03em}
+
+/* Proyectos: cada tarjeta toma el matiz de su cliente */
+.project-card{padding:2rem;background:linear-gradient(155deg,color-mix(in srgb,var(--hue,#444) 16%,var(--surface)),var(--surface) 58%);
+  border:1px solid color-mix(in srgb,var(--hue,#444) 30%,transparent);
+  box-shadow:0 40px 90px -50px color-mix(in srgb,var(--hue,#444) 70%,transparent)}
+.project-card:hover{background:linear-gradient(155deg,color-mix(in srgb,var(--hue,#444) 16%,var(--surface)),var(--surface) 58%);border-color:color-mix(in srgb,var(--hue,#444) 55%,transparent)}
+.project-name{font-size:clamp(1.6rem,2.6vw,2.1rem);letter-spacing:-.035em;line-height:1.1}
+.glass-canvas{height:190px;background:radial-gradient(circle at 30% 0%,color-mix(in srgb,var(--hue,#333) 42%,#000),#07080d 82%)}
+.glass-canvas::after{content:'';position:absolute;left:12%;right:12%;bottom:14%;height:5px;border-radius:9px;background:linear-gradient(90deg,var(--hue,#555),transparent);opacity:.8}
+.canvas-lead{font-family:var(--font-display);font-size:1.15rem}
+.canvas-sub{color:#e8e9f0}
+.project-glass-display{border-color:color-mix(in srgb,var(--hue,#444) 25%,transparent)}
+
+/* Experiencia: línea con puntos del matiz del cliente */
+.apple-timeline{position:relative;max-width:920px;margin-inline:0;gap:1.25rem}
+.apple-timeline::before{content:'';position:absolute;top:2rem;bottom:2rem;left:215px;width:1px;background:var(--line)}
+.timeline-row::before{content:'';position:absolute;left:211px;top:1.7rem;width:9px;height:9px;border-radius:50%;background:var(--hue);box-shadow:0 0 0 4px var(--bg-deep),0 0 18px var(--hue)}
+.timeline-row{position:relative}
+.timeline-row:nth-child(1){--hue:var(--h-indigo)}.timeline-row:nth-child(2){--hue:var(--h-rose)}
+.timeline-row:nth-child(3){--hue:var(--h-amber)}.timeline-row:nth-child(4){--hue:var(--h-teal)}
+.role-title{font-family:var(--font-display);font-size:1.4rem;letter-spacing:-.03em}
+@media (max-width:960px){.apple-timeline::before,.timeline-row::before{display:none}}
+
+/* Contacto */
+.contact-master-card{position:relative;padding:clamp(3rem,8vw,6rem) clamp(1.5rem,4vw,3rem);background:var(--surface)}
+.contact-master-card::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(55% 75% at 12% 0%,color-mix(in srgb,var(--h-indigo) 30%,transparent),transparent),
+             radial-gradient(55% 75% at 92% 100%,color-mix(in srgb,var(--h-rose) 26%,transparent),transparent)}
+.contact-master-card>*{position:relative;z-index:1}
+.contact-headline{font-size:clamp(2.4rem,6.5vw,5rem);line-height:1;letter-spacing:-.045em}
+.contact-liquid-btn{background:rgba(6,7,13,.6)}
