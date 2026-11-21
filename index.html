@@ -11,6 +11,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Daniel Rojas — Desarrollador Full-Stack">
   <meta property="og:description" content="Reservas, tiendas en línea y sistemas internos para negocios reales.">
+  <meta property="og:image" content="img/proyectos/zurych-1-inicio.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +28,7 @@
 
       <div class="nav-links" id="nav-menu">
         <a href="#proyectos" class="nav-link">Proyectos</a>
+        <a href="#galeria" class="nav-link">Galería</a>
         <a href="#sobre-mi" class="nav-link">Sobre mí</a>
         <a href="#experiencia" class="nav-link">Experiencia</a>
         <a href="#habilidades" class="nav-link">Habilidades</a>
@@ -68,7 +70,7 @@
           </div>
           <div>
             <dt>Full-stack y servidores</dt>
-            <dd>React, Django, Node.js y VPS Linux</dd>
+            <dd>React, Node.js, Django y Supabase</dd>
           </div>
         </dl>
       </div>
@@ -92,46 +94,60 @@
       <div class="container-wide">
         <div class="projects-grid" id="projects-container" data-filter="all">
 
-          <!-- RelaxVR360 -->
-          <article class="tile tile--wide tile--dark project-card" data-category="fullstack" style="--hue:#7d86ff">
+          <!-- Chocolate Zurych -->
+          <article class="tile project-card" data-category="fullstack ecommerce" style="--hue:#bb8833">
             <div class="tile-copy">
               <p class="tile-status"><span class="dot dot--live"></span>En producción</p>
-              <h3 class="tile-title">RelaxVR360</h3>
-              <p class="tile-tagline">Reservas de realidad virtual, sin llamadas ni libretas.</p>
-              <p class="tile-stack">React, TypeScript, Node.js, Supabase y Vercel</p>
+              <h3 class="tile-title">Chocolate Zurych</h3>
+              <p class="tile-tagline">Tienda con pedidos por WhatsApp y panel propio.</p>
+              <p class="tile-stack">React, TypeScript, Express, Supabase y Vercel</p>
               <div class="tile-links">
-                <a href="https://relaxvr360.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn">Abrir proyecto</a>
+                <a href="https://www.chocolatezurych.com/" target="_blank" rel="noopener noreferrer" class="btn">Abrir proyecto</a>
+                <button type="button" class="link-chevron link-gallery" data-open-gallery="zurych">Galería</button>
                 <details class="tile-details">
                   <summary class="link-chevron">Detalles</summary>
-                  <p>Aplicación web que automatiza las reservas de experiencias de realidad virtual en Montería. Interfaz en React y TypeScript desplegada en Vercel, lógica de servidor en Node.js y datos en Supabase.</p>
+                  <p>Tienda virtual y sitio de marca para una chocolatería artesanal de Bogotá. Los pedidos se guardan en la base de datos y llegan al negocio por WhatsApp, con precios recalculados en el servidor. Incluye blog, PQR y un panel de administración con 10 módulos.</p>
                 </details>
               </div>
             </div>
-            <div class="tile-media" aria-hidden="true">
-              <div class="mock mock--dark">
-                <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">relaxvr360.vercel.app</span></div>
-                <div class="mock-body m-relax">
-                  <div class="m-cal">
-                    <div class="m-row"><span class="ln w40"></span><span class="ln w15"></span></div>
-                    <div class="m-cal-grid">
-                      <i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i>
-                      <i></i><i class="on"></i><i></i><i class="sel"></i><i></i><i></i><i class="on"></i>
-                      <i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i>
-                      <i class="on"></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i>
-                    </div>
-                  </div>
-                  <div class="m-slots">
-                    <span class="ln w60"></span>
-                    <b></b><b class="sel"></b><b></b><b></b>
-                    <em class="m-cta"></em>
-                  </div>
-                </div>
+            <div class="tile-media">
+              <div class="mock">
+                <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mock-url">chocolatezurych.com</span></div>
+                <button type="button" class="mock-shot" data-open-gallery="zurych" aria-label="Ver galería de Chocolate Zurych">
+                  <img src="img/proyectos/zurych-1-inicio.webp" alt="" width="1280" height="800" loading="lazy" decoding="async">
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- RelaxVR360 -->
+          <article class="tile project-card" data-category="fullstack" style="--hue:#c9a34a">
+            <div class="tile-copy">
+              <p class="tile-status"><span class="dot dot--live"></span>En producción</p>
+              <h3 class="tile-title">RelaxVR360</h3>
+              <p class="tile-tagline">Reservas de bienestar sin llamadas ni libretas.</p>
+              <p class="tile-stack">React, TypeScript, Node.js, Supabase y Vercel</p>
+              <div class="tile-links">
+                <a href="https://relaxvr360.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn">Abrir proyecto</a>
+                <button type="button" class="link-chevron link-gallery" data-open-gallery="relax">Galería</button>
+                <details class="tile-details">
+                  <summary class="link-chevron">Detalles</summary>
+                  <p>Sitio y sistema de agendamiento para un centro de relajación en Montería. Reserva en cuatro pasos sin pago anticipado, consulta y cancelación de citas con el número de WhatsApp, simulador 360° y test de bienestar.</p>
+                </details>
+              </div>
+            </div>
+            <div class="tile-media">
+              <div class="mock">
+                <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mock-url">relaxvr360.vercel.app</span></div>
+                <button type="button" class="mock-shot" data-open-gallery="relax" aria-label="Ver galería de RelaxVR360">
+                  <img src="img/proyectos/relax-2-reservas.webp" alt="" width="1280" height="800" loading="lazy" decoding="async">
+                </button>
               </div>
             </div>
           </article>
 
           <!-- Amarme -->
-          <article class="tile tile--wide project-card" data-category="ecommerce" style="--hue:#e2577f">
+          <article class="tile project-card" data-category="ecommerce" style="--hue:#e2577f">
             <div class="tile-copy">
               <p class="tile-status"><span class="dot dot--live"></span>En producción</p>
               <h3 class="tile-title">Amarme Indumentaria</h3>
@@ -139,31 +155,25 @@
               <p class="tile-stack">WordPress, WooCommerce, pagos locales y CSS a medida</p>
               <div class="tile-links">
                 <a href="https://amarmeindumentaria.com/" target="_blank" rel="noopener noreferrer" class="btn">Abrir proyecto</a>
+                <button type="button" class="link-chevron link-gallery" data-open-gallery="amarme">Galería</button>
                 <details class="tile-details">
                   <summary class="link-chevron">Detalles</summary>
-                  <p>Tienda virtual con pasarelas de pago locales, cálculo de envíos por zona, catálogo con variaciones de talla y color, e interfaz personalizada con CSS moderno.</p>
+                  <p>Tienda con más de 60 prendas, filtros por categoría y variaciones de talla. Precio por transferencia, cuotas sin interés y envíos en 48 horas a CABA y GBA, con interfaz personalizada en CSS.</p>
                 </details>
               </div>
             </div>
-            <div class="tile-media" aria-hidden="true">
+            <div class="tile-media">
               <div class="mock">
-                <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">amarmeindumentaria.com</span></div>
-                <div class="mock-body m-shop">
-                  <div class="m-row"><span class="ln w15 strong"></span><span class="m-row-r"><span class="ln w8"></span><span class="ln w8"></span><span class="ln w8"></span></span></div>
-                  <div class="m-banner"><span class="ln w30 light"></span><span class="ln w20 light"></span></div>
-                  <div class="m-products">
-                    <div class="m-prod"><span class="m-img" style="--c:#f2d3db"></span><span class="ln w70"></span><span class="ln w30"></span></div>
-                    <div class="m-prod"><span class="m-img" style="--c:#e8dfd3"></span><span class="ln w60"></span><span class="ln w30"></span></div>
-                    <div class="m-prod"><span class="m-img" style="--c:#d8dce4"></span><span class="ln w70"></span><span class="ln w30"></span></div>
-                    <div class="m-prod"><span class="m-img" style="--c:#f6e4e8"></span><span class="ln w50"></span><span class="ln w30"></span></div>
-                  </div>
-                </div>
+                <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mock-url">amarmeindumentaria.com</span></div>
+                <button type="button" class="mock-shot" data-open-gallery="amarme" aria-label="Ver galería de Amarme Indumentaria">
+                  <img src="img/proyectos/amarme-2-tienda.webp" alt="" width="1280" height="800" loading="lazy" decoding="async">
+                </button>
               </div>
             </div>
           </article>
 
           <!-- Pool Químicos -->
-          <article class="tile tile--half project-card" data-category="backend" style="--hue:#12a594">
+          <article class="tile project-card" data-category="backend" style="--hue:#12a594">
             <div class="tile-copy">
               <p class="tile-status"><span class="dot"></span>Sistema privado</p>
               <h3 class="tile-title">Pool Químicos &amp; Suministros</h3>
@@ -193,37 +203,106 @@
             </div>
           </article>
 
-          <!-- Zurych -->
-          <article class="tile tile--half project-card" data-category="ecommerce" style="--hue:#b9773f">
-            <div class="tile-copy">
-              <p class="tile-status"><span class="dot"></span>Integración completada</p>
-              <h3 class="tile-title">Zurych Chocolate Artesanal</h3>
-              <p class="tile-tagline">De procesos en papel a una tienda con inventario central.</p>
-              <p class="tile-stack">WordPress, WooCommerce e inventarios</p>
-              <div class="tile-links">
-                <details class="tile-details">
-                  <summary class="link-chevron">Detalles</summary>
-                  <p>Diseño e integración del e-commerce corporativo. Los procesos manuales pasaron a un sistema centralizado para administrar inventario, pedidos y clientes.</p>
-                </details>
-              </div>
-            </div>
-            <div class="tile-media" aria-hidden="true">
-              <div class="mock">
-                <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">zurych-artesanal.com</span></div>
-                <div class="mock-body m-choco">
-                  <div class="m-choco-hero"><span class="ln w40 light"></span><span class="ln w25 light"></span><em></em></div>
-                  <div class="m-products">
-                    <div class="m-prod"><span class="m-img" style="--c:#4a2b1a"></span><span class="ln w60"></span></div>
-                    <div class="m-prod"><span class="m-img" style="--c:#7d4f2f"></span><span class="ln w50"></span></div>
-                    <div class="m-prod"><span class="m-img" style="--c:#c08a57"></span><span class="ln w60"></span></div>
-                    <div class="m-prod"><span class="m-img" style="--c:#2b1810"></span><span class="ln w40"></span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
         </div>
+      </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="section gallery" id="galeria">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <h2 class="section-title">Galería.</h2>
+            <p class="section-lead">Capturas de los sitios en producción.</p>
+          </div>
+          <div class="segmented" role="group" aria-label="Elegir proyecto de la galería">
+            <button class="filter-pill gallery-tab active" data-gallery="zurych" aria-pressed="true">Zurych</button>
+            <button class="filter-pill gallery-tab" data-gallery="relax" aria-pressed="false">RelaxVR360</button>
+            <button class="filter-pill gallery-tab" data-gallery="amarme" aria-pressed="false">Amarme</button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="gallery-track" data-gallery="zurych" aria-label="Capturas de Chocolate Zurych">
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/zurych-1-inicio.webp" alt="Inicio de Chocolate Zurych con la portada de las montañas de Santander" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Inicio.</strong> Portada con la historia de la marca y acceso directo a la tienda y a WhatsApp.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/zurych-2-producto.webp" alt="Ficha de producto con cantidad, botón Agregar al pedido y cotización por WhatsApp" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Ficha de producto.</strong> Presentaciones, cantidad mínima y precios “a convenir” que se cotizan por chat.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/zurych-3-blog.webp" alt="Blog con publicaciones y entrevistas de la marca" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Blog.</strong> Publicaciones y entrevistas con reacciones y comentarios moderados.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/zurych-4-ubicacion.webp" alt="Página Dónde encontrarnos con el punto físico y el mapa" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Dónde encontrarnos.</strong> Punto físico y planta de producción con mapa y contacto directo.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/zurych-5-origen.webp" alt="Sección Origen: Landázuri, Santander, con foto de la finca" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Origen.</strong> Secciones de marca editables desde el panel, con texto y fotos.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/zurych-6-panel.webp" alt="Pantalla de ingreso al panel de administración" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Panel de administración.</strong> Ingreso con Supabase Auth; el permiso se verifica en el servidor.</p>
+        </li>
+      </ul>
+
+      <ul class="gallery-track" data-gallery="relax" aria-label="Capturas de RelaxVR360" hidden>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/relax-1-inicio.webp" alt="Inicio de Relax VR 360 con el mensaje Regálate una pausa total" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Inicio.</strong> Propuesta del centro y acceso directo a agendar cita.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/relax-2-reservas.webp" alt="Sistema de reservas en cuatro pasos" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Reservas.</strong> Agenda en cuatro pasos, sin pago por adelantado.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/relax-3-experiencias.webp" alt="Catálogo de experiencias de bienestar con filtros" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Experiencias.</strong> Catálogo con filtros por línea y opción en pareja.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/relax-4-simulador.webp" alt="Simulador de paisajes inmersivos 360 grados" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Simulador 360°.</strong> Vista previa de los paisajes que se ven en la cabina.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/relax-5-test.webp" alt="Test de bienestar con opciones de diagnóstico" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Test de bienestar.</strong> Recomienda la experiencia según cómo se siente la persona.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/relax-6-mis-citas.webp" alt="Consulta de citas con el número de WhatsApp" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Mis citas.</strong> Consulta y cancelación con el número de WhatsApp registrado.</p>
+        </li>
+      </ul>
+
+      <ul class="gallery-track" data-gallery="amarme" aria-label="Capturas de Amarme Indumentaria" hidden>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/amarme-1-inicio.webp" alt="Portada de Amarme Indumentaria" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Inicio.</strong> Portada editorial de la marca.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/amarme-2-tienda.webp" alt="Tienda con productos y filtros por categoría" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Tienda.</strong> Filtros por categoría, descuentos y precio por transferencia.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/amarme-3-producto.webp" alt="Ficha de producto con selector de talla" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Producto.</strong> Variaciones de talla, galería y cuotas sin interés.</p>
+        </li>
+        <li class="shot-item">
+          <button type="button" class="shot"><img src="img/proyectos/amarme-4-beneficios.webp" alt="Beneficios: pagos seguros, envíos en 48 horas, cambios y seguimiento" width="1280" height="800" loading="lazy" decoding="async"></button>
+          <p class="shot-caption"><strong>Beneficios.</strong> Pagos seguros, envíos en 48 h, cambios y seguimiento.</p>
+        </li>
+      </ul>
+
+      <div class="container gallery-controls">
+        <button type="button" class="paddle" data-dir="-1" aria-label="Capturas anteriores">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+        </button>
+        <button type="button" class="paddle" data-dir="1" aria-label="Capturas siguientes">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
       </div>
     </section>
 
@@ -244,12 +323,12 @@
           <div class="card">
             <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
             <h3>Frontend y backend</h3>
-            <p>Interfaces en React y TypeScript, servicios en Django y Node.js, y bases de datos en MySQL y Supabase. Me encargo del producto completo, de la pantalla a la base de datos.</p>
+            <p>Interfaces en React y TypeScript, APIs en Express, Node.js y Django, y bases de datos en PostgreSQL, MySQL y Supabase. Me encargo del producto completo, de la pantalla a la base de datos.</p>
           </div>
           <div class="card">
             <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></svg>
             <h3>Servidores y despliegue</h3>
-            <p>Configuro y aseguro servidores VPS en Linux y Windows, publico en Vercel y automatizo las tareas operativas que más tiempo le quitan a un negocio.</p>
+            <p>Configuro y aseguro servidores VPS en Linux y Windows, publico en Vercel con dominio propio, automatizo pruebas y análisis de código, y dejo documentado cómo operar cada sistema.</p>
           </div>
         </div>
       </div>
@@ -263,13 +342,14 @@
         </div>
 
         <ol class="jobs">
-          <li class="job" style="--hue:#7d86ff">
+          <li class="job" style="--hue:#c9a34a">
             <p class="job-date"><time datetime="2026-08">Ago</time> – <time datetime="2026-09">sep 2026</time></p>
             <div class="job-body">
               <h3>Desarrollador Full-Stack</h3>
-              <p class="job-org">RelaxVR360, Montería, Colombia</p>
+              <p class="job-org">Relax VR 360° Montería S.A.S., Montería, Colombia</p>
               <ul>
-                <li>Aplicación web para gestionar automáticamente las citas y reservas del negocio.</li>
+                <li>Sistema de reservas en cuatro pasos y consulta o cancelación de citas con el número de WhatsApp.</li>
+                <li>Catálogo de experiencias con filtros, simulador de paisajes 360° y test de bienestar que recomienda una experiencia.</li>
                 <li>Interfaz en React y TypeScript desplegada en Vercel, y lógica de servidor en Node.js con Supabase.</li>
               </ul>
             </div>
@@ -280,19 +360,22 @@
               <h3>Desarrollador Web</h3>
               <p class="job-org">Amarme Indumentaria, Argentina</p>
               <ul>
-                <li>Diseño y desarrollo de la tienda virtual con WordPress y WooCommerce.</li>
-                <li>Integración de envíos, variaciones de producto y ajustes de interfaz con CSS personalizado.</li>
+                <li>Diseño y desarrollo de la tienda virtual con WordPress y WooCommerce, con más de 60 productos y filtros por categoría.</li>
+                <li>Variaciones de talla, precio por transferencia, cuotas sin interés y envíos por zona.</li>
+                <li>Ajustes de interfaz con CSS personalizado.</li>
               </ul>
             </div>
           </li>
-          <li class="job" style="--hue:#b9773f">
+          <li class="job" style="--hue:#bb8833">
             <p class="job-date"><time datetime="2026-02">Feb</time> – <time datetime="2026-03">mar 2026</time></p>
             <div class="job-body">
-              <h3>Ingeniero de Integración Web</h3>
-              <p class="job-org">Zurych Chocolate Artesanal S.A.S.</p>
+              <h3>Desarrollador Full-Stack</h3>
+              <p class="job-org">Chocolate Zurych, Bogotá, Colombia</p>
               <ul>
-                <li>Diseño e integración de la plataforma de comercio electrónico corporativa.</li>
-                <li>Sistema centralizado para administrar inventario, pedidos y clientes.</li>
+                <li>Tienda virtual con tres catálogos cuyos pedidos se guardan en la base de datos y llegan al negocio por WhatsApp; el servidor recalcula precios y totales.</li>
+                <li>API en Express como función serverless en Vercel, con validación zod compartida entre frontend y backend, límites por IP y honeypot.</li>
+                <li>Base de datos en Supabase (PostgreSQL) con 17 tablas y RLS, Auth para administradores y subida de archivos con URL firmada.</li>
+                <li>Panel con 10 módulos, blog con reacciones y comentarios moderados, SEO técnico, 41 pruebas en Vitest y SonarQube en CI.</li>
               </ul>
             </div>
           </li>
@@ -322,19 +405,23 @@
         <dl class="specs">
           <div class="spec-row">
             <dt>Frontend</dt>
-            <dd><ul class="spec-list"><li>React</li><li>TypeScript</li><li>JavaScript (ES6+)</li><li>HTML5 semántico</li><li>CSS moderno</li><li>Diseño responsivo</li></ul></dd>
+            <dd><ul class="spec-list"><li>React</li><li>TypeScript</li><li>JavaScript (ES6+)</li><li>Vite</li><li>Tailwind CSS</li><li>React Query y Zustand</li><li>react-hook-form y zod</li><li>HTML5 semántico</li><li>Diseño responsivo</li></ul></dd>
           </div>
           <div class="spec-row">
             <dt>Backend y datos</dt>
-            <dd><ul class="spec-list"><li>Python</li><li>Django</li><li>Node.js</li><li>MySQL</li><li>Supabase</li><li>APIs REST</li></ul></dd>
+            <dd><ul class="spec-list"><li>Node.js y Express</li><li>Python y Django</li><li>PostgreSQL</li><li>MySQL</li><li>Supabase (Auth, Storage)</li><li>Seguridad a nivel de fila (RLS)</li><li>APIs REST</li></ul></dd>
           </div>
           <div class="spec-row">
             <dt>Servidores</dt>
-            <dd><ul class="spec-list"><li>Administración de VPS</li><li>Linux y Bash</li><li>Windows Server</li><li>Redes</li><li>Despliegues en Vercel</li></ul></dd>
+            <dd><ul class="spec-list"><li>Administración de VPS</li><li>Linux y Bash</li><li>Windows Server</li><li>Redes</li><li>Vercel y funciones serverless</li><li>DNS y dominios</li></ul></dd>
+          </div>
+          <div class="spec-row">
+            <dt>Calidad y seguridad</dt>
+            <dd><ul class="spec-list"><li>Vitest</li><li>SonarQube Cloud</li><li>GitHub Actions</li><li>Rate limiting y CORS</li><li>SEO técnico y JSON-LD</li><li>Documentación técnica</li></ul></dd>
           </div>
           <div class="spec-row">
             <dt>CMS y e-commerce</dt>
-            <dd><ul class="spec-list"><li>WordPress</li><li>WooCommerce</li><li>Elementor y Gutenberg</li><li>Envíos y pagos</li><li>Estilos a medida</li></ul></dd>
+            <dd><ul class="spec-list"><li>WordPress</li><li>WooCommerce</li><li>Elementor y Gutenberg</li><li>Envíos y pagos</li><li>Pedidos por WhatsApp</li></ul></dd>
           </div>
           <div class="spec-row">
             <dt>Formación</dt>
@@ -404,11 +491,32 @@
       <nav class="footer-nav" aria-label="Pie de página">
         <a href="#hero">Inicio</a>
         <a href="#proyectos">Proyectos</a>
+        <a href="#galeria">Galería</a>
         <a href="#experiencia">Experiencia</a>
         <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </footer>
+
+  <!-- Visor de imágenes -->
+  <dialog class="lightbox" id="lightbox" aria-label="Galería de capturas">
+    <div class="lb-top">
+      <p class="lb-count" id="lb-count" aria-live="polite"></p>
+      <button type="button" class="lb-close" id="lb-close" aria-label="Cerrar galería">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <figure class="lb-figure">
+      <img id="lb-img" src="" alt="">
+      <figcaption id="lb-caption"></figcaption>
+    </figure>
+    <button type="button" class="lb-nav lb-prev" id="lb-prev" aria-label="Imagen anterior">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+    </button>
+    <button type="button" class="lb-nav lb-next" id="lb-next" aria-label="Imagen siguiente">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </button>
+  </dialog>
 
   <script src="script.js"></script>
 </body>

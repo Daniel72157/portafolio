@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 2. Filtro de proyectos (botones con aria-pressed + anuncio de resultados)
-  const pills = document.querySelectorAll('.filter-pill');
+  const pills = document.querySelectorAll('#proyectos .filter-pill');
   const cards = document.querySelectorAll('.project-card');
   const status = document.getElementById('filter-status');
   const grid = document.getElementById('projects-container');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (grid) grid.dataset.filter = filter;
       let count = 0;
       cards.forEach((card) => {
-        const show = filter === 'all' || card.dataset.category === filter;
+        const show = filter === 'all' || card.dataset.category.split(' ').includes(filter);
         card.classList.toggle('hidden', !show);
         if (show) {
           count++;
@@ -115,4 +115,120 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { root: null, rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
   sections.forEach((s) => navObserver.observe(s));
+
+  // 5. Galería: pestañas por proyecto y flechas de desplazamiento
+  const tabs = document.querySelectorAll('.gallery-tab');
+  const tracks = document.querySelectorAll('.gallery-track');
+  const paddles = document.querySelectorAll('.paddle');
+  const trackFor = (name) => document.querySelector(`.gallery-track[data-gallery="${name}"]`);
+  const visibleTrack = () => [...tracks].find((t) => !t.hidden);
+
+  const updatePaddles = () => {
+    const t = visibleTrack();
+    if (!t) return;
+    const max = t.scrollWidth - t.clientWidth - 2;
+    paddles.forEach((p) => {
+      p.disabled = p.dataset.dir === '-1' ? t.scrollLeft <= 2 : t.scrollLeft >= max;
+    });
+  };
+
+  const showGallery = (name) => {
+    tabs.forEach((tab) => {
+      const on = tab.dataset.gallery === name;
+      tab.classList.toggle('active', on);
+      tab.setAttribute('aria-pressed', String(on));
+    });
+    tracks.forEach((t) => {
+      t.hidden = t.dataset.gallery !== name;
+      if (!t.hidden) t.scrollLeft = 0;
+    });
+    updatePaddles();
+  };
+
+  tabs.forEach((tab) => tab.addEventListener('click', () => showGallery(tab.dataset.gallery)));
+  paddles.forEach((p) => p.addEventListener('click', () => {
+    const t = visibleTrack();
+    if (!t) return;
+    const item = t.querySelector('.shot-item');
+    const step = item ? item.getBoundingClientRect().width + 20 : t.clientWidth * 0.8;
+    t.scrollBy({ left: step * Number(p.dataset.dir), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+  }));
+  tracks.forEach((t) => t.addEventListener('scroll', updatePaddles, { passive: true }));
+  window.addEventListener('resize', updatePaddles);
+  updatePaddles();
+
+  // 6. Visor de imágenes (dialog nativo: Escape, foco y lectores de pantalla)
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  const lbCount = document.getElementById('lb-count');
+  let lbItems = [];
+  let lbIndex = 0;
+  let lbOpener = null;
+
+  const renderLightbox = () => {
+    const item = lbItems[lbIndex];
+    const img = item.querySelector('img');
+    const caption = item.querySelector('.shot-caption');
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt;
+    lbCaption.innerHTML = caption ? caption.innerHTML : '';
+    lbCount.textContent = `${lbIndex + 1} de ${lbItems.length}`;
+  };
+
+  const openLightbox = (name, index, opener) => {
+    const track = trackFor(name);
+    if (!lb || !track) return;
+    lbItems = [...track.querySelectorAll('.shot-item')];
+    lbIndex = index;
+    lbOpener = opener;
+    renderLightbox();
+    document.documentElement.classList.add('lb-lock');
+    if (typeof lb.showModal === 'function') lb.showModal();
+    else lb.setAttribute('open', '');
+  };
+
+  const step = (dir) => {
+    if (!lbItems.length) return;
+    lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
+    renderLightbox();
+  };
+
+  if (lb) {
+    document.getElementById('lb-prev').addEventListener('click', () => step(-1));
+    document.getElementById('lb-next').addEventListener('click', () => step(1));
+    document.getElementById('lb-close').addEventListener('click', () => lb.close());
+    lb.addEventListener('close', () => {
+      document.documentElement.classList.remove('lb-lock');
+      if (lbOpener) lbOpener.focus();
+    });
+    lb.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+    // clic fuera de la imagen y los controles cierra
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb || e.target.classList.contains('lb-figure')) lb.close();
+    });
+    // deslizar en pantallas táctiles
+    let startX = null;
+    lbImg.addEventListener('pointerdown', (e) => { startX = e.clientX; });
+    lbImg.addEventListener('pointerup', (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+    });
+  }
+
+  tracks.forEach((track) => {
+    track.querySelectorAll('.shot').forEach((btn, i) => {
+      btn.setAttribute('aria-label', `Ampliar: ${btn.querySelector('img').alt}`);
+      btn.addEventListener('click', () => openLightbox(track.dataset.gallery, i, btn));
+    });
+  });
+
+  document.querySelectorAll('[data-open-gallery]').forEach((btn) => {
+    btn.addEventListener('click', () => openLightbox(btn.dataset.openGallery, 0, btn));
+  });
 });
